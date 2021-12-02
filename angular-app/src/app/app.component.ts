@@ -6,26 +6,43 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'angular-app';
-  nome ='Bianca';
-  cor= 'azul';
-  valorDigitado = null;
-  numeroCpf= '';
-  resultado!: boolean;
+  title = 'curso de angular';
+  nome = 'Fabrizio';
+  cor = 'vermelho';
+  valorDigitado = '';
+  cpfDigitado : string = '';
+  msgCpf : string = '';
 
-
-  botaoClick(){
-    alert('uma mensagem')
-    this.cor = (this.cor == 'azul' ? 'vermelho': 'azul') ;
+  botaoClick() {
+    alert('Uma mensagem');
+    console.log(this.testaCPF('27999620098'))
+    this.cor = (this.cor == 'azul' ? 'vermelho' : 'azul');
   }
-  // modo didítico
+
   // inputKeyUp(input:any){
+
+  //   //console.log(value)
   //   console.log(input.target.value);
   //   this.valorDigitado = input.target.value;
+  //   //console.log(this.valorDigitado)
   // }
-  validaCPF(){
-    console.log(this.testaCPF(this.numeroCpf))
-    this.resultado = this.testaCPF(this.numeroCpf)
+
+  getValor() {
+    return 'BRQ';
+  }
+
+  onCpfBlur(){
+    let cpfValido = this.testaCPF( this.cpfDigitado );
+
+    if (cpfValido){
+      this.msgCpf = 'CPF é Válido';
+    }
+    else {
+      this.msgCpf = 'CPF não é válido';
+    }
+
+    //this.msgCpf = (cpfValido ? 'CPF é Válido': 'CPF não é válido');
+
   }
 
   testaCPF(strCPF: string) {
@@ -46,8 +63,6 @@ export class AppComponent {
 
     if ((Resto == 10) || (Resto == 11)) Resto = 0;
     if (Resto != parseInt(strCPF.substring(10, 11))) return false;
-    return true ;
-  
+    return true;
   }
-  
 }

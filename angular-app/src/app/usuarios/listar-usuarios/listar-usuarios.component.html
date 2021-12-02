@@ -1,0 +1,25 @@
+<p>listar-usuarios works!</p>
+<table class="table">
+  <tr>
+    <th>ID</th>
+    <th>nome</th>
+    <th>sobrenome</th>
+    <th>Idade</th>
+  </tr>
+  <!-- forEach diretiva estrutural-
+    diretiva é um componente sem HTML que
+     altera a estrutra de elementos HTML  -->
+  <tr *ngFor="let dados of usuarios; let i = index">
+    <td>{{ i + 1 }}</td>
+    <td>{{ dados.nome }}</td>
+    <td>{{ dados.sobrenome }}</td>
+    <td>
+      <span *ngIf="dados.idade <= 15" style="background-color: blue">{{
+        dados.idade
+      }}</span>
+      <span *ngIf="dados.idade > 15" style="background-color: red">{{
+        dados.idade
+      }}</span>
+    </td>
+  </tr>
+</table>

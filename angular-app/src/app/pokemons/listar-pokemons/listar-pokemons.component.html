@@ -1,0 +1,20 @@
+<p>listar-pokemons works!</p>
+<table class="table">
+  <tr>
+    <th>ID</th>
+    <th>Nome</th>
+    <th>Url</th>
+  </tr>
+  <!-- forEach diretiva estrutural-
+      diretiva é um componente sem HTML que
+       altera a estrutra de elementos HTML  -->
+  <tr *ngFor="let dados of pokemons.results; let i = index">
+    <td>{{ i + 1 }}</td>
+    <td>{{ dados.name }}</td>
+    <td>{{ dados.url }}</td>
+  </tr>
+  <tr>
+    <td colspan="2">Total:</td>
+    <td>{{ pokemons.count }}</td>
+  </tr>
+</table>

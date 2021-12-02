@@ -1,23 +1,41 @@
 <h2>Curso de Angular</h2>
-<app-meu-primeiro> </app-meu-primeiro>
-<!-- interpolação -->
-{{ title }}
-{{ nome }}
-<!--  property binding for -->
-<p [class]="cor">Meu parágrafo</p>
-<!-- event binding-->
-<button (click)="botaoClick()">Enviar</button>
-<!-- forma didática
-  <input type="text" (keyup)="inputKeyUp($event)" />
-<p>{{ valorDigitado }}</p> -->
 
-<!--  two wey-->
-<!-- <input type="text" [(ngModel)]="valorDigitado" />
-<p>{{ valorDigitado }}</p> -->
+<app-meu-primeiro></app-meu-primeiro>
+
+{{ title }}
+
+<p class="{{ cor }}">Meu parágrafo</p>
+
+<p [class]="cor">Meu parágrafo</p>
+
+<!-- <p class="vermelho" > Meu parágrafo </p> -->
+
+<button (click)="botaoClick()">Enviar</button>
+
+<!-- <input type="text" (keyup)="inputKeyUp($event)"> -->
+
+<!-- <p>
+  {{ valorDigitado }}
+</p> -->
+
+<input type="text" [(ngModel)]="valorDigitado" />
 
 <p>
-  <input type="text" [(ngModel)]="numeroCpf" />
-  {{ resultado }}
+  {{ valorDigitado + 60 }}
 </p>
 
-<button (click)="testaCPF(numeroCpf)">verificar</button>
+<p>
+  {{ getValor() }}
+</p>
+
+<h2>Exercício do CPF:</h2>
+<p>
+  <label>CPF:</label>
+  <input type="text" [(ngModel)]="cpfDigitado" (blur)="onCpfBlur()" />
+</p>
+
+<p *ngIf="msgCpf != ''">
+  {{ msgCpf }}
+</p>
+
+<app-listar-pokemons></app-listar-pokemons>>
