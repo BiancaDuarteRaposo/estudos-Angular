@@ -11,7 +11,9 @@
   <tr *ngFor="let dados of pokemons.results; let i = index">
     <td>{{ i + 1 }}</td>
     <td>{{ dados.name }}</td>
-    <td>{{ dados.url }}</td>
+    <td>
+      <a [href]="dados.url" target="_blank">{{ dados.url }}</a>
+    </td>
   </tr>
   <tr>
     <td colspan="2">Total:</td>
