@@ -5,6 +5,7 @@
     <th>nome</th>
     <th>sobrenome</th>
     <th>Idade</th>
+    <th>Mostrar Dados</th>
   </tr>
   <!-- forEach diretiva estrutural-
     diretiva é um componente sem HTML que
@@ -21,5 +22,23 @@
         dados.idade
       }}</span>
     </td>
+    <td>
+      <button class="btn btn-info" (click)="onUsuarioClick(dados)">
+        Selecionar
+      </button>
+    </td>
   </tr>
 </table>
+<div class="alert-success" *ngIf="seEhMaiorQue18 && usuarioSelecionadoPai">
+  A idade do usuário é maior ou igual a 18!
+</div>
+
+<div class="alert-danger" *ngIf="!seEhMaiorQue18 && usuarioSelecionadoPai">
+  A idade do usuário é menor que 18!
+</div>
+<!-- O componente filho (app-detalhe-usuario) recebe os valor da variável "usuarioSelecionadoPai" (componente pai) -->
+<app-detalhe-usuario
+  [usuarioSelecionadoDetalhe]="usuarioSelecionadoPai"
+  (emitirSeMaiorQue18)="metodoDoPai($event)"
+>
+</app-detalhe-usuario>

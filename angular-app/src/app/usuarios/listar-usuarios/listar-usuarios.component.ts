@@ -6,14 +6,30 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./listar-usuarios.component.css']
 })
 export class ListarUsuariosComponent implements OnInit {
-  usuarios=[
-    { nome:"Julia",sobrenome:"Silva", idade:10},
-    { nome:"Alice",sobrenome:"Silva", idade:25},
-    { nome:"Eloá",sobrenome:"Silva", idade:17},
-]
-  constructor() { }
+
+  usuarioSelecionadoPai = null;
+  seEhMaiorQue18: boolean = false;
+
+  usuarios = [
+    { nome: "João", sobrenome: "Silva", idade: 10 },
+    { nome: "Arnaldo", sobrenome: "Lima", idade: 30 },
+    { nome: "José", sobrenome: "Pereira", idade: 50 }
+  ];
+
+  constructor() {
+  }
 
   ngOnInit(): void {
+  }
+
+  onUsuarioClick(dados : any){
+    console.log(dados);
+    this.usuarioSelecionadoPai = dados;
+  }
+
+  metodoDoPai(evento : any){
+    console.log('método do pai....', evento);
+    this.seEhMaiorQue18 = evento;
   }
 
 }
