@@ -8,6 +8,8 @@ import { MeuPrimeiroComponent } from './meu-primeiro/meu-primeiro.component';
 import { PokemonsModule } from './pokemons/pokemons.module';
 import { UsuariosModule } from './usuarios/usuarios.module';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
+import {IMaskModule} from 'angular-imask';
+
    
 
 @NgModule({
@@ -22,7 +24,8 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
     FormsModule,
     UsuariosModule,
     PokemonsModule,
-    TooltipModule.forRoot()
+    TooltipModule.forRoot(),
+    IMaskModule
   ],
   providers: [],
   bootstrap: [AppComponent]
