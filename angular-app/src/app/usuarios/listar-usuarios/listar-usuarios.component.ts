@@ -11,9 +11,9 @@ export class ListarUsuariosComponent implements OnInit {
   seEhMaiorQue18: boolean = false;
 
   usuarios = [
-    { nome: "João", sobrenome: "Silva", idade: 10 },
-    { nome: "Arnaldo", sobrenome: "Lima", idade: 30 },
-    { nome: "José", sobrenome: "Pereira", idade: 50 }
+    { nome: "João", sobrenome: "Silva", idade: 33, nascimento : '1988-05-02' },
+    { nome: "Arnaldo", sobrenome: "Lima", idade: 26, nascimento : '1996-09-04' },
+    { nome: "José", sobrenome: "Pereira", idade: 24, nascimento : '1998-10-01' }
   ];
 
   constructor() {

@@ -21,6 +21,7 @@ export class DetalhePokemonsComponent implements OnInit, OnChanges {
   this.emitirIdPokemon.emit(id);
   }
 
+  
   ngOnInit(): void {
     
   }

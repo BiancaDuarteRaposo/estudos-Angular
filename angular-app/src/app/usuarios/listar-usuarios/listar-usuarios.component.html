@@ -5,6 +5,8 @@
     <th>nome</th>
     <th>sobrenome</th>
     <th>Idade</th>
+    <th>Data nascimento</th>
+
     <th>Mostrar Dados</th>
   </tr>
   <!-- forEach diretiva estrutural-
@@ -22,6 +24,7 @@
         dados.idade
       }}</span>
     </td>
+    <td>{{ dados.nascimento | date: "dd/MM/yyyy" }}</td>
     <td>
       <button class="btn btn-info" (click)="onUsuarioClick(dados)">
         Selecionar

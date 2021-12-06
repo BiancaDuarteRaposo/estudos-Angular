@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class ListarPokemonsComponent implements OnInit {
   pokemonSelecionadoPai :any =null;
   
+  diaDeHoje = new Date();
   onSelecionarClick(dados: any)
 {
   this.pokemonSelecionadoPai= dados;
