@@ -6,6 +6,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./listar-pokemons.component.css']
 })
 export class ListarPokemonsComponent implements OnInit {
+  pokemonSelecionadoPai :any =null;
+  
+  onSelecionarClick(dados: any)
+{
+  this.pokemonSelecionadoPai= dados;
+}
+  receberIdFilho(variavel : any){
+  
+    alert("O ID do Filho é " + variavel)
+}
+
+
   pokemons = {
     count: 1118,
     next: "https://pokeapi.co/api/v2/pokemon?offset=300&limit=100",

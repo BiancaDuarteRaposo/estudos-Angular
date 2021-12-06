@@ -1,22 +1,27 @@
-<p>listar-pokemons works!</p>
 <table class="table">
   <tr>
-    <th>ID</th>
     <th>Nome</th>
-    <th>Url</th>
+    <th>URL</th>
+    <th>Mostrar Dados</th>
   </tr>
-  <!-- forEach diretiva estrutural-
-      diretiva é um componente sem HTML que
-       altera a estrutra de elementos HTML  -->
-  <tr *ngFor="let dados of pokemons.results; let i = index">
-    <td>{{ i + 1 }}</td>
-    <td>{{ dados.name }}</td>
+
+  <tr *ngFor="let p of pokemons.results">
+    <td>{{ p.name }}</td>
     <td>
-      <a [href]="dados.url" target="_blank">{{ dados.url }}</a>
+      <a [href]="p.url" target="blank"> {{ p.url }} </a>
+    </td>
+    <td>
+      <button class="btn btn-info" (click)="onSelecionarClick(p)">
+        Selecionar
+      </button>
     </td>
   </tr>
-  <tr>
-    <td colspan="2">Total:</td>
-    <td>{{ pokemons.count }}</td>
-  </tr>
 </table>
+
+<p>A quantidade de pokemons é igual a {{ pokemons.count }}</p>
+
+<app-detalhe-pokemons
+  *ngIf="pokemonSelecionadoPai"
+  [pokemonSelecionadoDetalhe]="pokemonSelecionadoPai"
+  (emitirIdPokemon)="receberIdFilho($event)"
+></app-detalhe-pokemons>
