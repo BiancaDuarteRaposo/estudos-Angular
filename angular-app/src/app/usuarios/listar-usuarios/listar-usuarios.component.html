@@ -1,4 +1,4 @@
-<p>listar-usuarios works!</p>
+<p grifaTexto>listar-usuarios works!</p>
 <table class="table">
   <tr>
     <th>ID</th>
@@ -6,6 +6,8 @@
     <th>sobrenome</th>
     <th>Idade</th>
     <th>Data nascimento</th>
+    <th>CPF</th>
+    <th>Investimentos</th>
 
     <th>Mostrar Dados</th>
   </tr>
@@ -25,6 +27,8 @@
       }}</span>
     </td>
     <td>{{ dados.nascimento | date: "dd/MM/yyyy" }}</td>
+    <td>{{ dados.cpf | cpf }}</td>
+    <td>{{ dados.investimentos | currency: "BRL" }}</td>
     <td>
       <button class="btn btn-info" (click)="onUsuarioClick(dados)">
         Selecionar

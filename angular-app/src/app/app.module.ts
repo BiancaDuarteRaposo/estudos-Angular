@@ -8,16 +8,11 @@ import { MeuPrimeiroComponent } from './meu-primeiro/meu-primeiro.component';
 import { PokemonsModule } from './pokemons/pokemons.module';
 import { UsuariosModule } from './usuarios/usuarios.module';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
-import {IMaskModule} from 'angular-imask';
-
-   
+import { IMaskModule } from 'angular-imask';
+import { ProfessoresModule } from './professores/professores.module';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    MeuPrimeiroComponent,
- 
-  ],
+  declarations: [AppComponent, MeuPrimeiroComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -25,9 +20,10 @@ import {IMaskModule} from 'angular-imask';
     UsuariosModule,
     PokemonsModule,
     TooltipModule.forRoot(),
-    IMaskModule
+    IMaskModule,
+    ProfessoresModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

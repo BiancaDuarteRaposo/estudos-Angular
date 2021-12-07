@@ -1,0 +1,13 @@
+<p>listar-professores works!</p>
+<table class="table">
+  <tr>
+    <th>ID</th>
+    <th>Nome</th>
+    <th>Email</th>
+  </tr>
+  <tr *ngFor="let p of professores">
+    <td>{{ p.id + 1 }}</td>
+    <td>{{ p.nome }}</td>
+    <td>{{ p.email }}</td>
+  </tr>
+</table>

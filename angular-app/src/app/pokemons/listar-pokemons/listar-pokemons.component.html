@@ -6,7 +6,7 @@
   </tr>
 
   <tr *ngFor="let p of pokemons.results">
-    <td>{{ p.name | uppercase | lowercase }}</td>
+    <td>{{ p.name }}</td>
     <td>
       <a [href]="p.url" target="blank"> {{ p.url }} </a>
     </td>
