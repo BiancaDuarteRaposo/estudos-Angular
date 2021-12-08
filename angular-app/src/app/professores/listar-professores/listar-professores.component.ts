@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { ProfessoresService } from '../professores.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -8,13 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListarProfessoresComponent implements OnInit {
   professores: any = null;
-  constructor(private varHttpClient: HttpClient) {}
+  constructor(private professoresService: ProfessoresService) {}
 
   ngOnInit(): void {
-    this.varHttpClient
-      .get('http://cursos.grandeporte.com.br:8080/professores')
-      .subscribe((dados) => {
-        this.professores = dados;
-      });
+    this.professoresService.getAll().subscribe((dados) => {
+      this.professores = dados;
+    });
   }
 }

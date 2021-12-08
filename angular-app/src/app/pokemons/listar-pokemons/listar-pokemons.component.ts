@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-
+import { PokemonsService } from '../pokemons.service';
 @Component({
   selector: 'app-listar-pokemons',
   templateUrl: './listar-pokemons.component.html',
@@ -18,13 +17,11 @@ export class ListarPokemonsComponent implements OnInit {
     alert('O ID do Filho é ' + variavel);
   }
 
-  constructor(private varPokemonsList: HttpClient) {}
+  constructor(private pokemonService: PokemonsService) {}
 
   ngOnInit(): void {
-    this.varPokemonsList
-      .get('https://pokeapi.co/api/v2/pokemon')
-      .subscribe((dados) => {
-        this.pokemons = dados;
-      });
+    this.pokemonService.getAll().subscribe((dados: any) => {
+      this.pokemons = dados;
+    });
   }
 }
