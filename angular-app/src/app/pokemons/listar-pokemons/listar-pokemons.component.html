@@ -5,7 +5,7 @@
     <th>Mostrar Dados</th>
   </tr>
 
-  <tr *ngFor="let p of pokemons.results">
+  <tr *ngFor="let p of pokemons?.results">
     <td>{{ p.name }}</td>
     <td>
       <a [href]="p.url" target="blank"> {{ p.url }} </a>
@@ -18,7 +18,7 @@
   </tr>
 </table>
 
-<p>A quantidade de pokemons é igual a {{ pokemons.count }}</p>
+<p>A quantidade de pokemons é igual a {{ pokemons?.count }}</p>
 <p>
   {{ diaDeHoje | date: "dd/MM/yyyy" }}
 </p>
