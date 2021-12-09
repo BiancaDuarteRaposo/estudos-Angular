@@ -5,7 +5,12 @@
     <th>Mostrar Dados</th>
   </tr>
 
-  <tr *ngFor="let p of pokemons?.results">
+  <tr
+    *ngFor="
+      let p of pokemons?.results;
+      paginate: { itemsPerPage: 100, currentPage: paginaAtual }
+    "
+  >
     <td>{{ p.name }}</td>
     <td>
       <a [href]="p.url" target="blank"> {{ p.url }} </a>
@@ -15,6 +20,14 @@
         Selecionar
       </button>
     </td>
+  </tr>
+  <tr>
+    <pagination-controls
+      (pageChange)="paginaAtual = $event"
+      previousLabel="Anterior"
+      nextLabel="Próximo"
+    >
+    </pagination-controls>
   </tr>
 </table>
 

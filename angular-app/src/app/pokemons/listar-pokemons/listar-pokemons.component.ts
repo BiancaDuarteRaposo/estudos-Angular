@@ -6,6 +6,8 @@ import { PokemonsService } from '../pokemons.service';
   styleUrls: ['./listar-pokemons.component.css'],
 })
 export class ListarPokemonsComponent implements OnInit {
+  public paginaAtual = 1; // Dizemos que queremos que o componente quando carregar, inicialize na página 1.
+
   pokemons: any = null;
   pokemonSelecionadoPai: any = null;
 

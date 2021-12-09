@@ -10,13 +10,14 @@ import { UsuariosModule } from './usuarios/usuarios.module';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { IMaskModule } from 'angular-imask';
 import { ProfessoresModule } from './professores/professores.module';
+import { FormulariosModule } from './formularios/formularios.module';
 
 @NgModule({
   declarations: [AppComponent, MeuPrimeiroComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule,
+    FormulariosModule,
     UsuariosModule,
     PokemonsModule,
     TooltipModule.forRoot(),
