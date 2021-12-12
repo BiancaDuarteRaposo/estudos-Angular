@@ -1,23 +1,42 @@
-<p>meu-form works!</p>
-<form [formGroup]="form">
+<form [formGroup]="meuForm">
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Email address</label>
     <input
       type="email"
       class="form-control"
       id="exampleInputEmail1"
-      aria-describedby="emailHelp"
+      formControlName="email"
     />
     <div id="emailHelp" class="form-text">
       We'll never share your email with anyone else.
     </div>
   </div>
+
+  <app-field-error [deveMostrar]="isValid('email')"></app-field-error>
+
+  <app-debug-form [controlFilho]="getControl('email')"></app-debug-form>
+
   <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">Password</label>
-    <input type="password" class="form-control" id="exampleInputPassword1" />
+    <input
+      type="password"
+      class="form-control"
+      id="exampleInputPassword1"
+      formControlName="password"
+    />
   </div>
+
+  <app-field-error [deveMostrar]="isValid('password')"></app-field-error>
+
+  <app-debug-form [controlFilho]="getControl('password')"></app-debug-form>
+
   <div class="mb-3 form-check">
-    <input type="checkbox" class="form-check-input" id="exampleCheck1" />
+    <input
+      type="checkbox"
+      class="form-check-input"
+      id="exampleCheck1"
+      formControlName="checkme"
+    />
     <label class="form-check-label" for="exampleCheck1">Check me out</label>
   </div>
   <button type="submit" class="btn btn-primary">Submit</button>

@@ -11,6 +11,8 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { IMaskModule } from 'angular-imask';
 import { ProfessoresModule } from './professores/professores.module';
 import { FormulariosModule } from './formularios/formularios.module';
+import { SharedModule } from './shared/shared.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [AppComponent, MeuPrimeiroComponent],
@@ -23,6 +25,8 @@ import { FormulariosModule } from './formularios/formularios.module';
     TooltipModule.forRoot(),
     IMaskModule,
     ProfessoresModule,
+    SharedModule,
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
