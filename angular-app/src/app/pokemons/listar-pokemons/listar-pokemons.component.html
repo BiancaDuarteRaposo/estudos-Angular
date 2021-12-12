@@ -7,8 +7,13 @@
 
   <tr
     *ngFor="
-      let p of pokemons?.results;
-      paginate: { itemsPerPage: 100, currentPage: paginaAtual }
+      let p of pokemons?.results
+        | paginate
+          : {
+              itemsPerPage: this.itemsPerPage,
+              currentPage: page,
+              totalItems: pokemons?.count
+            }
     "
   >
     <td>{{ p.name }}</td>
@@ -21,17 +26,25 @@
       </button>
     </td>
   </tr>
-  <tr>
-    <pagination-controls
-      (pageChange)="paginaAtual = $event"
-      previousLabel="Anterior"
-      nextLabel="Próximo"
-    >
-    </pagination-controls>
-  </tr>
 </table>
 
-<p>A quantidade de pokemons é igual a {{ pokemons?.count }}</p>
+<pagination-controls (pageChange)="onPageChange($event)"></pagination-controls>
+<div class="container">
+  <p>Itens por página:</p>
+  <select
+    #quantidadeSelecionada
+    class="form-select form-select-ms"
+    [(ngModel)]="itemsPerPage"
+    (change)="itemsPerPageSelect(quantidadeSelecionada.value)"
+    id="sel1"
+  >
+    <option value="10">10</option>
+    <option value="20">20</option>
+    <option value="50">50</option>
+    <option value="100">100</option>
+  </select>
+</div>
+<p>A quantidade total de pokemons é igual a {{ pokemons?.count }}</p>
 <p>
   {{ diaDeHoje | date: "dd/MM/yyyy" }}
 </p>
