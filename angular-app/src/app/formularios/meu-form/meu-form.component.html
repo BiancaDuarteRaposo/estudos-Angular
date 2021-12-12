@@ -12,7 +12,11 @@
     </div>
   </div>
 
-  <app-field-error [deveMostrar]="isValid('email')"></app-field-error>
+  <app-field-error
+    [deveMostrar]="isValid('email')"
+    [controlFilho]="getControl('email')"
+    fieldName="Email"
+  ></app-field-error>
 
   <app-debug-form [controlFilho]="getControl('email')"></app-debug-form>
 
@@ -26,7 +30,11 @@
     />
   </div>
 
-  <app-field-error [deveMostrar]="isValid('password')"></app-field-error>
+  <app-field-error
+    [deveMostrar]="isValid('password')"
+    [controlFilho]="getControl('password')"
+    fieldName="Senha"
+  ></app-field-error>
 
   <app-debug-form [controlFilho]="getControl('password')"></app-debug-form>
 

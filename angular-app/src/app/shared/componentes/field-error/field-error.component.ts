@@ -8,6 +8,10 @@ import { Component, Input, OnInit } from '@angular/core';
 export class FieldErrorComponent implements OnInit {
   @Input()
   deveMostrar: boolean | undefined = false;
+  @Input()
+  controlFilho: any;
+  @Input()
+  fieldName: string = '';
 
   constructor() {}
 

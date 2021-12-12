@@ -29,16 +29,17 @@ export class ListarPokemonsComponent implements OnInit {
   onPageChange(newPage: number) {
     this.page = newPage;
     let offset = newPage * this.itemsPerPage - this.itemsPerPage;
+    this.fetch(offset);
+  }
+
+  fetch(offset: number) {
     this.pokemonService.getAll(offset, this.itemsPerPage).subscribe((dados) => {
       this.pokemons = dados;
     });
   }
-
   constructor(private pokemonService: PokemonsService) {}
 
   ngOnInit(): void {
-    this.pokemonService.getAll(0, this.itemsPerPage).subscribe((dados) => {
-      this.pokemons = dados;
-    });
+    this.fetch(0);
   }
 }
