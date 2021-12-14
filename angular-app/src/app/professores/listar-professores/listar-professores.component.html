@@ -4,10 +4,16 @@
     <th>ID</th>
     <th>Nome</th>
     <th>Email</th>
+    <th>Ações</th>
   </tr>
   <tr *ngFor="let p of professores">
-    <td>{{ p.id + 1 }}</td>
+    <td>{{ p.id }}</td>
     <td>{{ p.nome }}</td>
     <td>{{ p.email }}</td>
+    <td>
+      <button class="btn btn-outline-danger" (click)="onApagarClick(p)">
+        Apagar
+      </button>
+    </td>
   </tr>
 </table>

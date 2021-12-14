@@ -10,4 +10,10 @@ export class ProfessoresService {
     // observa o endereço/api
     return this.http.get('http://cursos.grandeporte.com.br:8080/professores');
   }
+
+  delete(id: number) {
+    return this.http.delete(
+      `http://cursos.grandeporte.com.br:8080/professores/${id}`
+    );
+  }
 }

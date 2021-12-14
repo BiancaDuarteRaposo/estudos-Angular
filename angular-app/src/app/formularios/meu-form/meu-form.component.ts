@@ -5,6 +5,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { FormulariosService } from '../formularios.service';
 
 @Component({
   selector: 'app-meu-form',
@@ -14,25 +15,19 @@ import {
 export class MeuFormComponent implements OnInit {
   meuForm: FormGroup = new FormGroup({
     email: new FormControl(),
-    password: new FormControl(),
+    nome: new FormControl(),
     checkme: new FormControl(),
   });
 
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private formularioServico: FormulariosService
+  ) {}
 
   ngOnInit(): void {
     this.meuForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
-      password: [
-        '',
-        [
-          Validators.required,
-          Validators.minLength(8),
-          Validators.pattern(
-            '^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$'
-          ),
-        ],
-      ],
+      nome: ['', [Validators.required, Validators.minLength(8)]],
       checkme: ['', []],
     });
     console.log(this.meuForm);
@@ -47,5 +42,14 @@ export class MeuFormComponent implements OnInit {
       this.getControl(control)?.valid == false &&
       this.getControl(control)?.touched
     );
+  }
+
+  onSubmit() {
+    console.log(this.meuForm.value);
+    this.formularioServico
+      .salvar(this.meuForm.value)
+      .subscribe((resposta: any) => {
+        console.log(resposta);
+      });
   }
 }
