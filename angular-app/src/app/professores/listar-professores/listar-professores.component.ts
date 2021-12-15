@@ -17,7 +17,7 @@ export class ListarProfessoresComponent implements OnInit {
 
   onApagarClick(professor: any) {
     console.log(professor);
-    this.professorService.delete(professor.id).subscribe(() => {
+    this.professorService.deletar(professor.id).subscribe(() => {
       //this.retornarTodos();
       let index = this.professores.findIndex(
         (obj: any) => professor.id == obj.id
