@@ -13,6 +13,7 @@ import { ProfessoresModule } from './professores/professores.module';
 import { FormulariosModule } from './formularios/formularios.module';
 import { SharedModule } from './shared/shared.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AlunosModule } from './alunos/alunos.module';
 
 @NgModule({
   declarations: [AppComponent, MeuPrimeiroComponent],
@@ -27,6 +28,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ProfessoresModule,
     SharedModule,
     BrowserAnimationsModule,
+    AlunosModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

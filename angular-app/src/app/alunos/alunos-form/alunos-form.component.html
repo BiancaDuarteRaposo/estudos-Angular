@@ -1,0 +1,117 @@
+<p>alunos-form works!</p>
+<form [formGroup]="meuForm" (submit)="onSubmit()">
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Email do aluno:</label>
+    <input
+      type="email"
+      class="form-control"
+      [class.is-invalid]="isValid('email')"
+      id="exampleInputEmail1"
+      formControlName="email"
+    />
+  </div>
+
+  <app-field-error
+    [deveMostrar]="isValid('email')"
+    [controlFilho]="meuForm.controls['email']"
+  ></app-field-error>
+
+  <div class="mb-3">
+    <label class="form-label">Nome do aluno</label>
+    <input type="text" class="form-control" id="nome" formControlName="nome" />
+  </div>
+
+  <app-field-error
+    [deveMostrar]="isValid('nome')"
+    [controlFilho]="meuForm.controls['nome']"
+  ></app-field-error>
+
+  <div class="mb-3">
+    <label class="form-label">Senha</label>
+    <input
+      type="password"
+      class="form-control"
+      id="senha"
+      formControlName="senha"
+    />
+  </div>
+
+  <div class="mb-3 form-check">
+    <input
+      type="checkbox"
+      class="form-check-input"
+      id="tipo_usuario"
+      formControlName="tipo_usuario"
+    />
+    <label class="form-check-label" for="tipo_usuario">Tipo de usuário</label>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Cep</label>
+    <input type="text" class="form-control" id="cep" formControlName="cep" />
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">logradouro</label>
+    <input
+      type="text"
+      class="form-control"
+      id="logradouro"
+      formControlName="logradouro"
+    />
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">numero</label>
+    <input
+      type="text"
+      class="form-control"
+      id="numero"
+      formControlName="numero"
+    />
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">complemento</label>
+    <input
+      type="text"
+      class="form-control"
+      id="complemento"
+      formControlName="complemento"
+    />
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">cidade</label>
+    <input
+      type="text"
+      class="form-control"
+      id="cidade"
+      formControlName="cidade"
+    />
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">bairro</label>
+    <input
+      type="text"
+      class="form-control"
+      id="bairro"
+      formControlName="bairro"
+    />
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Estado</label>
+    <input
+      type="text"
+      class="form-control"
+      id="estado"
+      formControlName="estado"
+    />
+  </div>
+
+  <button type="submit" class="btn btn-primary" [disabled]="!meuForm.valid">
+    Enviar
+  </button>
+</form>
