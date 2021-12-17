@@ -1,6 +1,16 @@
 <p>alunos-form works!</p>
 <form [formGroup]="meuForm" (submit)="onSubmit()">
   <div class="mb-3">
+    <label class="form-label">Nome do aluno</label>
+    <input type="text" class="form-control" id="nome" formControlName="nome" />
+  </div>
+
+  <app-field-error
+    [deveMostrar]="isValid('nome')"
+    [controlFilho]="meuForm.controls['nome']"
+  ></app-field-error>
+
+  <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Email do aluno:</label>
     <input
       type="email"
@@ -17,16 +27,6 @@
   ></app-field-error>
 
   <div class="mb-3">
-    <label class="form-label">Nome do aluno</label>
-    <input type="text" class="form-control" id="nome" formControlName="nome" />
-  </div>
-
-  <app-field-error
-    [deveMostrar]="isValid('nome')"
-    [controlFilho]="meuForm.controls['nome']"
-  ></app-field-error>
-
-  <div class="mb-3">
     <label class="form-label">Senha</label>
     <input
       type="password"
@@ -35,6 +35,11 @@
       formControlName="senha"
     />
   </div>
+
+  <app-field-error
+    [deveMostrar]="isValid('senha')"
+    [controlFilho]="meuForm.controls['senha']"
+  ></app-field-error>
 
   <div class="mb-3 form-check">
     <input
@@ -48,8 +53,18 @@
 
   <div class="mb-3">
     <label class="form-label">Cep</label>
-    <input type="text" class="form-control" id="cep" formControlName="cep" />
+    <input
+      type="text"
+      class="form-control"
+      (blur)="buscarCep()"
+      id="cep"
+      formControlName="cep"
+    />
   </div>
+  <app-field-error
+    [deveMostrar]="isValid('cep')"
+    [controlFilho]="meuForm.controls['cep']"
+  ></app-field-error>
 
   <div class="mb-3">
     <label class="form-label">logradouro</label>
@@ -60,6 +75,10 @@
       formControlName="logradouro"
     />
   </div>
+  <app-field-error
+    [deveMostrar]="isValid('logradouro')"
+    [controlFilho]="meuForm.controls['logradouro']"
+  ></app-field-error>
 
   <div class="mb-3">
     <label class="form-label">numero</label>
@@ -70,6 +89,10 @@
       formControlName="numero"
     />
   </div>
+  <app-field-error
+    [deveMostrar]="isValid('numero')"
+    [controlFilho]="meuForm.controls['numero']"
+  ></app-field-error>
 
   <div class="mb-3">
     <label class="form-label">complemento</label>
@@ -90,6 +113,10 @@
       formControlName="cidade"
     />
   </div>
+  <app-field-error
+    [deveMostrar]="isValid('cidade')"
+    [controlFilho]="meuForm.controls['cidade']"
+  ></app-field-error>
 
   <div class="mb-3">
     <label class="form-label">bairro</label>
@@ -100,6 +127,10 @@
       formControlName="bairro"
     />
   </div>
+  <app-field-error
+    [deveMostrar]="isValid('bairro')"
+    [controlFilho]="meuForm.controls['bairro']"
+  ></app-field-error>
 
   <div class="mb-3">
     <label class="form-label">Estado</label>
@@ -110,6 +141,10 @@
       formControlName="estado"
     />
   </div>
+  <app-field-error
+    [deveMostrar]="isValid('estado')"
+    [controlFilho]="meuForm.controls['estado']"
+  ></app-field-error>
 
   <button type="submit" class="btn btn-primary" [disabled]="!meuForm.valid">
     Enviar

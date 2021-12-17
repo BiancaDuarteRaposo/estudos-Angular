@@ -6,6 +6,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { CepService } from 'src/app/shared/services/cep.service';
 import { AlunosService } from '../alunos.service';
 
 @Component({
@@ -35,24 +36,22 @@ export class AlunosFormComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private fb: FormBuilder,
     private alunoService: AlunosService,
-    private router: Router
+    private router: Router,
+    private cepService: CepService
   ) {}
 
   ngOnInit(): void {
     //console.log(this.activatedRoute)
 
     this.meuForm = this.fb.group({
-      email: [
-        '',
-        [Validators.required, Validators.minLength(5), Validators.email],
-      ],
+      email: ['', [Validators.required, Validators.email]],
       nome: ['', [Validators.required]],
-      senha: ['', [Validators.required]],
+      senha: ['', [Validators.required, Validators.minLength(5)]],
       tipo_usuario: ['', [Validators.required]],
       cep: ['', [Validators.required]],
       logradouro: ['', [Validators.required]],
       numero: ['', [Validators.required]],
-      complemento: ['', [Validators.required]],
+      complemento: ['', []],
       cidade: ['', [Validators.required]],
       bairro: ['', [Validators.required]],
       estado: ['', [Validators.required]],
@@ -70,14 +69,33 @@ export class AlunosFormComponent implements OnInit {
           this.meuForm.patchValue(resposta);
         });
       }
-      // Criação
-      else {
-      }
     });
   }
 
   getControl(control: string) {
     return this.meuForm.get(control);
+  }
+
+  buscarCep() {
+    return this.cepService.consultar(this.meuForm.value.cep).subscribe({
+      next: (result: any) => {
+        this.meuForm.patchValue({
+          logradouro: result.logradouro,
+          cidade: result.localidade,
+          bairro: result.bairro,
+          estado: result.uf,
+        });
+      },
+      error: (error) => {
+        alert('Cep inválido!');
+        this.meuForm.patchValue({
+          logradouro: null,
+          cidade: null,
+          bairro: null,
+          estado: null,
+        });
+      },
+    });
   }
 
   isValid(control: string) {

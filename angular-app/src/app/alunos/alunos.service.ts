@@ -5,10 +5,11 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class AlunosService {
+  apiUrl = 'http://cursos.grandeporte.com.br:8080/usuarios';
   constructor(private http: HttpClient) {}
 
   getAll() {
-    return this.http.get('http://cursos.grandeporte.com.br:8080/usuarios');
+    return this.http.get(this.apiUrl);
   }
 
   deletar(id: number) {
