@@ -5,7 +5,6 @@ import { DetalhePokemonsComponent } from './detalhe-pokemons/detalhe-pokemons.co
 import { SharedModule } from '../shared/shared.module';
 import { PokemonsRoutingModule } from './pokemons-routing.module';
 import { NgxPaginationModule } from 'ngx-pagination';
-import { BrowserModule } from '@angular/platform-browser';
 
 @NgModule({
   declarations: [ListarPokemonsComponent, DetalhePokemonsComponent],
@@ -14,7 +13,6 @@ import { BrowserModule } from '@angular/platform-browser';
     SharedModule,
     PokemonsRoutingModule,
     NgxPaginationModule,
-    BrowserModule,
   ],
   exports: [ListarPokemonsComponent],
 })

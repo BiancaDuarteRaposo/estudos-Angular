@@ -4,9 +4,9 @@ import { ListarProfessoresComponent } from './listar-professores/listar-professo
 import { ProfessorFormComponent } from './professor-form/professor-form.component';
 
 const routes: Routes = [
-  { path: 'professores', component: ListarProfessoresComponent },
-  { path: 'professores/new', component: ProfessorFormComponent },
-  { path: 'professores/:id', component: ProfessorFormComponent },
+  { path: '', component: ListarProfessoresComponent },
+  { path: 'new', component: ProfessorFormComponent },
+  { path: ':id', component: ProfessorFormComponent },
 ];
 
 // query params:
