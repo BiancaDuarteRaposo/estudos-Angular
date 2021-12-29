@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { MeuPrimeiroComponent } from './meu-primeiro/meu-primeiro.component';
+import { ProfessorGuardService } from './professores/professor-guard.service';
 
 const routes: Routes = [
   { path: 'primeiro-componente', component: MeuPrimeiroComponent },
@@ -28,11 +29,16 @@ const routes: Routes = [
       import('./professores/professores.module').then(
         (m) => m.ProfessoresModule
       ),
+    canActivate: [ProfessorGuardService],
   },
   {
     path: 'usuarios',
     loadChildren: () =>
       import('./usuarios/usuarios.module').then((m) => m.UsuariosModule),
+  },
+  {
+    path: 'auth',
+    loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
   },
 ];
 

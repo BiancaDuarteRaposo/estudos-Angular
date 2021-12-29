@@ -1,26 +1,35 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from './shared/services/auth.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
+  constructor(public authService: AuthService, private router: Router) {}
+
+  onSairClick() {
+    localStorage.removeItem('autenticado');
+    this.router.navigate(['/']);
+  }
+
   title = 'curso de angular';
   nome = 'Fabrizio';
   cor = 'vermelho';
   valorDigitado = '';
-  cpfDigitado : string = '';
-  msgCpf : string = '';
+  cpfDigitado: string = '';
+  msgCpf: string = '';
   public mask: any = {
     mask: '+{7} (000) 000-00-00',
-    lazy: false
+    lazy: false,
   };
 
   botaoClick() {
     alert('Uma mensagem');
-    console.log(this.testaCPF('27999620098'))
-    this.cor = (this.cor == 'azul' ? 'vermelho' : 'azul');
+    console.log(this.testaCPF('27999620098'));
+    this.cor = this.cor == 'azul' ? 'vermelho' : 'azul';
   }
 
   // inputKeyUp(input:any){
@@ -35,41 +44,38 @@ export class AppComponent {
     return 'BRQ';
   }
 
-  onCpfBlur(){
-    let cpfValido = this.testaCPF( this.cpfDigitado );
+  onCpfBlur() {
+    let cpfValido = this.testaCPF(this.cpfDigitado);
 
-    if (cpfValido){
+    if (cpfValido) {
       this.msgCpf = 'CPF é Válido';
-    }
-    else {
+    } else {
       this.msgCpf = 'CPF não é válido';
     }
 
     //this.msgCpf = (cpfValido ? 'CPF é Válido': 'CPF não é válido');
-
   }
-  
 
   testaCPF(strCPF: string) {
     var Soma;
     var Resto;
     Soma = 0;
-    if (strCPF == "00000000000") return false;
+    if (strCPF == '00000000000') return false;
 
-    for (let i = 1; i <= 9; i++) Soma = Soma + parseInt(strCPF.substring(i - 1, i)) * (11 - i);
+    for (let i = 1; i <= 9; i++)
+      Soma = Soma + parseInt(strCPF.substring(i - 1, i)) * (11 - i);
     Resto = (Soma * 10) % 11;
 
-    if ((Resto == 10) || (Resto == 11)) Resto = 0;
+    if (Resto == 10 || Resto == 11) Resto = 0;
     if (Resto != parseInt(strCPF.substring(9, 10))) return false;
 
     Soma = 0;
-    for (let i = 1; i <= 10; i++) Soma = Soma + parseInt(strCPF.substring(i - 1, i)) * (12 - i);
+    for (let i = 1; i <= 10; i++)
+      Soma = Soma + parseInt(strCPF.substring(i - 1, i)) * (12 - i);
     Resto = (Soma * 10) % 11;
 
-    if ((Resto == 10) || (Resto == 11)) Resto = 0;
+    if (Resto == 10 || Resto == 11) Resto = 0;
     if (Resto != parseInt(strCPF.substring(10, 11))) return false;
     return true;
   }
-
-
 }
