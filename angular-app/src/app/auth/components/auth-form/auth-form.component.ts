@@ -33,10 +33,14 @@ export class AuthFormComponent implements OnInit {
     this.authService
       .autenticar(this.meuForm.value.email, this.meuForm.value.senha)
       .subscribe({
-        next: (response) => {
+        next: (response: any) => {
           console.log(response);
-          if (response == true) {
-            localStorage.setItem('autenticado', 'true');
+          // if (response == true){
+          //   localStorage.setItem('autenticado', 'true');
+          //   this.router.navigate(['/professores'])
+          // }
+          if (response != false) {
+            localStorage.setItem('localFrontend', JSON.stringify(response));
             this.router.navigate(['/professores']);
           }
         },

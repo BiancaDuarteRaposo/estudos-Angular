@@ -10,6 +10,8 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { IMaskModule } from 'angular-imask';
 import { SharedModule } from './shared/shared.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { JwtInterceptorService } from './shared/services/jwt-interceptor.service';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent, MeuPrimeiroComponent],
@@ -21,8 +23,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     IMaskModule,
     SharedModule,
     BrowserAnimationsModule,
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: JwtInterceptorService,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

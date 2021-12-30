@@ -12,6 +12,8 @@ export class AppComponent {
 
   onSairClick() {
     localStorage.removeItem('autenticado');
+    localStorage.removeItem('localFrontend');
+
     this.router.navigate(['/']);
   }
 

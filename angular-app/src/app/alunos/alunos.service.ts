@@ -1,11 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AlunosService {
-  apiUrl = 'http://cursos.grandeporte.com.br:8080/usuarios';
+  apiUrl = `${environment.urlApiGp}/usuarios`;
+  
   constructor(private http: HttpClient) {}
 
   getAll() {
@@ -13,28 +15,18 @@ export class AlunosService {
   }
 
   deletar(id: number) {
-    //return this.http.delete("http://cursos.grandeporte.com.br:8080/professores/"+id)
-    return this.http.delete(
-      `http://cursos.grandeporte.com.br:8080/usuarios/${id}`
-    );
+    return this.http.delete(`${this.apiUrl}/${id}`);
   }
 
   salvar(body: any) {
-    return this.http.post(
-      'http://cursos.grandeporte.com.br:8080/usuarios',
-      body
-    );
+    return this.http.post(`${this.apiUrl}`, body);
   }
+
   getOne(id: number) {
-    return this.http.get(
-      `http://cursos.grandeporte.com.br:8080/usuarios/${id}`
-    );
+    return this.http.get(`${this.apiUrl}/${id}`);
   }
 
   update(id: number, body: any) {
-    return this.http.patch(
-      `http://cursos.grandeporte.com.br:8080/usuarios/${id}`,
-      body
-    );
+    return this.http.patch(`${this.apiUrl}/${id}`, body);
   }
 }

@@ -33,7 +33,7 @@ export class ListarPokemonsComponent implements OnInit {
   }
 
   fetch(offset: number) {
-    this.pokemonService.getAll(offset, this.itemsPerPage).subscribe((dados) => {
+    this.pokemonService.getAllP(offset, this.itemsPerPage).subscribe((dados) => {
       this.pokemons = dados;
     });
   }

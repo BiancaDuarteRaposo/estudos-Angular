@@ -60,6 +60,7 @@
             class="nav-link"
             [routerLink]="['/meu-form']"
             routerLinkActive="active"
+            *ngIf="authService.isAdmin()"
             >Formularios</a
           >
         </li>
